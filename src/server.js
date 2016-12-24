@@ -18,15 +18,14 @@ if (process.env.NODE_ENV === 'production') {
   }];
 } else {
   const bunyanDebugStream = require('bunyan-debug-stream');
-  // stream: process.stdout,
-  const stream = bunyanDebugStream({
+  const stream = bunyanDebugStream && bunyanDebugStream({
     basepath: __dirname, // this should be the root folder of your project.
     forceColor: true,
   });
   streams = [{
     level: level || 'debug',
     type: 'stream',
-    stream,
+    stream: stream || process.stdout,
   }];
 }
 const logger = bunyan.createLogger({
