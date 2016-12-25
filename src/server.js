@@ -17,7 +17,12 @@ if (process.env.NODE_ENV === 'production') {
     count: 3,        // keep 3 back copies    }
   }];
 } else {
-  const bunyanDebugStream = require('bunyan-debug-stream');
+  var bunyanDebugStream;
+  try {
+    bunyanDebugStream = require('bunyan-debug-stream');
+  } catch (e) {
+    bunyanDebugStream = null;
+  }
   const stream = bunyanDebugStream && bunyanDebugStream({
     basepath: __dirname, // this should be the root folder of your project.
     forceColor: true,
