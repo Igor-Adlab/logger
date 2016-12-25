@@ -1,5 +1,5 @@
-const bunyan = require('bunyan');
-const isMeteor = require('./util');
+var bunyan = require('bunyan');
+var isMeteor = require('./util');
 
 function MyRawStream() {
 }
