@@ -4,7 +4,7 @@ const isMeteor = require('./util');
 function MyRawStream() {
 }
 
-MyRawStream.prototype.write = function (rec) {
+MyRawStream.prototype.write = function(rec) {
   if (!rec) {
     return undefined;
   }
@@ -22,7 +22,6 @@ MyRawStream.prototype.write = function (rec) {
 
 const logger = bunyan.createLogger({
   name: 'app',
-  time: Date.now(),
   stream: new MyRawStream(),
   type: 'raw',
   level: isMeteor() && Meteor.settings.public.logLevel || 'info',
