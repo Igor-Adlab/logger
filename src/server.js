@@ -1,9 +1,9 @@
-const bunyan = require('bunyan');
-const isMeteor = require('./util');
+var bunyan = require('bunyan');
+var isMeteor = require('./util');
 
 
 var streams;
-const level = (isMeteor() && Meteor.settings.public.logLevel) || process.env.logLevel;
+var level = (isMeteor() && Meteor.settings.public.logLevel) || process.env.logLevel;
 
 const app = process.env.APP_NAME || 'app';
 if (process.env.NODE_ENV === 'production') {

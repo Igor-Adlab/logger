@@ -1,10 +1,10 @@
-const isBrowser = new Function('try {return this===window;}catch(e){ return false;}');
+var isBrowser = new Function('try {return this===window;}catch(e){ return false;}');
 
-const isServerSideRenderEnabled = new Function('try {return this===process.browser;}catch(e){ return false;}');
+var isServerSideRenderEnabled = new Function('try {return this===process.browser;}catch(e){ return false;}');
 
-const isNode = new Function('try {return this===global;}catch(e){return false;}');
+var isNode = new Function('try {return this===global;}catch(e){return false;}');
 
-const isSSR = isServerSideRenderEnabled();
+var isSSR = isServerSideRenderEnabled();
 
 if (isBrowser() || isSSR) {
   if (isSSR) {
