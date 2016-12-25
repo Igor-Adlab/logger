@@ -1,6 +1,7 @@
 const bunyan = require('bunyan');
 const isMeteor = require('./util');
 
+
 var streams;
 const level = (isMeteor() && Meteor.settings.public.logLevel) || process.env.logLevel;
 
@@ -17,16 +18,19 @@ if (process.env.NODE_ENV === 'production') {
     count: 3,        // keep 3 back copies    }
   }];
 } else {
-  var bunyanDebugStream;
-  try {
-    bunyanDebugStream = require('bunyan-debug-stream' + '');
-  } catch (e) {
-    bunyanDebugStream = null;
-  }
-  const stream = bunyanDebugStream && bunyanDebugStream({
-    basepath: __dirname, // this should be the root folder of your project.
-    forceColor: true,
-  });
+  const PrettyStream  = require('bunyan-prettystream');
+  //var bunyanDebugStream;
+  // try {
+  //   bunyanDebugStream = require('bunyan-debug-stream' + '');
+  // } catch (e) {
+  //   bunyanDebugStream = null;
+  // }
+  const stream = new PrettyStream();
+  stream.pipe(process.stdout);
+  // const stream = bunyanDebugStream && bunyanDebugStream({
+  //   basepath: __dirname, // this should be the root folder of your project.
+  //   forceColor: true,
+  // });
   streams = [{
     level: level || 'debug',
     type: 'stream',
