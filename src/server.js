@@ -19,18 +19,8 @@ if (process.env.NODE_ENV === 'production') {
   }];
 } else {
   const PrettyStream  = require('bunyan-prettystream');
-  //var bunyanDebugStream;
-  // try {
-  //   bunyanDebugStream = require('bunyan-debug-stream' + '');
-  // } catch (e) {
-  //   bunyanDebugStream = null;
-  // }
   const stream = new PrettyStream();
   stream.pipe(process.stdout);
-  // const stream = bunyanDebugStream && bunyanDebugStream({
-  //   basepath: __dirname, // this should be the root folder of your project.
-  //   forceColor: true,
-  // });
   streams = [{
     level: level || 'debug',
     type: 'stream',
@@ -39,7 +29,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 const logger = bunyan.createLogger({
   name: app,
-  time: Date,
   streams
 });
 
