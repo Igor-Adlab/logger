@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   var bunyanDebugStream;
   try {
-    bunyanDebugStream = require('bunyan-debug-stream');
+    bunyanDebugStream = require('bunyan-debug-stream' + '');
   } catch (e) {
     bunyanDebugStream = null;
   }
